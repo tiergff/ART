@@ -1,0 +1,25 @@
+# [build]
+#   command = "cd exampleSite && hugo --gc --minify -D -b https://blowfish.page"
+#   publish = "exampleSite/public"
+#
+# [build.environment]
+# HUGO_VERSION = "0.165.0"
+# HUGO_THEMESDIR = "../.."
+# HUGO_THEME = "repo"
+
+
+[build]
+  command = "hugo mod get -u && hugo --gc --minify -b $URL"
+  publish = "public"
+
+[build.environment]
+  NODE_ENV = "production"
+  GO_VERSION = "1.16"
+  TZ = "UTC"  # Set to preferred timezone
+
+[context.production.environment]
+  HUGO_VERSION = "0.165.0"
+  HUGO_ENV = "production"
+
+[context.deploy-preview.environment]
+  HUGO_VERSION = "0.165.0"
