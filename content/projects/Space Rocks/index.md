@@ -31,8 +31,8 @@ showAuthorsBadges : false
 
 <br>
 
-{{< button href="https://cc.tiergff.cc/game/space-rocks/" target="blank" >}}
-在线试玩
+{{< button href="https://tiergff.lanzouw.com/iXaW54ckfjlc" target="blank" >}}
+下载试玩
 {{< /button >}}
 
 ![](featured.jpg)
