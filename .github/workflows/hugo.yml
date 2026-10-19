@@ -1,5 +1,5 @@
 # Sample workflow for building and deploying a Hugo site to GitHub Pages
-name: Blowfish Docs Deploy
+name: Deploy Hugo site to Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -18,7 +18,7 @@ permissions:
 # Allow one concurrent deployment
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 # Default to bash
 defaults:
@@ -30,7 +30,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.168.0
+      HUGO_VERSION: 0.165.0
     steps:
       - name: Install Hugo CLI
         run: |
@@ -46,7 +46,7 @@ jobs:
       - name: Build with Hugo
         env:
           # For maximum backward compatibility with Hugo modules
-          HUGO_ENVIRONMENT: production
+          HUGO_ENVIRONMENT: ${{ runner.temp }}/hugo_cache
           HUGO_ENV: production
         run: |
           hugo \
@@ -55,7 +55,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          path: ./docs
+          path: ./public
 
   # Deployment job
   deploy:
